@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.8" />
+	<title>@ViewData["Title"] - tap.az</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/tap.az.styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+<body>
+
+
+
+	<header>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+
+
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="https://turbo.az/">Turbo.az</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="https://bina.az/">Bina.az</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="https://boss.az/">Boss.az</a>
+						</li>
+
+					</ul>
+					<ul class="navbar-nav mb-2 mb-lg-0" style="text-align: right;">
+						<li class="nav-item">
+							<a class="bar-phones-i nav-link active" aria-current="page" href="tel:+994125990805"> (012) 599-08-05</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Yardim</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">RU</a>
+						</li>
+						<li class="nav-item">
+
+							<a class="nav-link active" aria-current="page" href="#"> ♥ Seçilmişlər</a>
+						</li>
+
+
+
+						<div class="cta d-none d-md-block">
+							@{
+								if (User.Identity.IsAuthenticated)
+								{
+
+
+									<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+										<span class="navbar-toggler-icon"></span>
+									</button>
+									<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+										<ul class="navbar-nav">
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+													@User.Identity.Name
+												</a>
+												<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+													@{
+														if (User.IsInRole("SuperAdmin"))
+														{
+															<li><a class="dropdown-item" asp-area="manage" asp-controller="dashboard" asp-action="index">Admin Panel</a></li>
+														}
+
+													}
+													<li><a class="dropdown-item" asp-action="index" asp-controller="post" >Elanlarım</a></li>
+													<li><a class="dropdown-item" asp-controller="account" asp-action="logout">Logout</a></li>
+										
+												</ul>
+											</li>
+										</ul>
+									</div>
+
+
+
+									
+
+								}
+								else
+								{
+								<li class="nav-item">
+									<a asp-action="login" asp-controller="account" class="nav-link active">👤  Giriş</a>
+								</li>
+
+								}
+							}
+
+						</div>
+
+						
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="nav">
+			<div class="bars">
+				<i class="fas fa-bars">
+
+				</i>
+			</div>
+
+
+			<div class="logo">
+				<a style="color: white" asp-action="index" asp-controller="home"><h2>tap.az</h2></a>
+
+
+			</div>
+
+
+
+
+			<div>
+				<div class="search-box">
+					<input type="text" class="search" placeholder="Əşya və ya xidmət axtarışı">
+
+
+
+					<span class="find">🔍Tap</span>
+				</div>
+			</div>
+			<div class="btn">
+				<a style="color: white" asp-action="create" asp-controller="post" class="new-ads">Yeni elan</a>
+				<i class="fa-solid fa-circle-plus"></i>
+			</div>
+
+
+			@*<ul id="leftMenu" class="left-menu">
+			<li class="menu-header">
+			<h4>tap.az</h4>
+			<i class="fa-solid fa-xmark">
+
+			</i>
+			</li>
+
+			<li>
+			<i class="fa-solid fa-user">
+
+			</i> Giriş
+			</li>
+			<li>
+			<i class="fa-solid fa-heart">
+
+			</i> Seçilmişlər
+			</li>
+			<li>
+			<i class="fa-solid fa-wallet">
+
+			</i> Balansı artırın
+			</li>
+			<li>Yardım</li>
+			<li>İstifadəçi razılaşması</li>
+			<li>Məxfilik siyasəti</li>
+			<li>Saytda reklam</li>
+			<li>Məxfilik siyasəti</li>
+			<li>Tam versiyası</li>
+			<li>
+			<i id="chat" class="fa-solid fa-comments">
+
+			</i>Bizimlə əlaqə
+			</li>
+
+
+			</ul>*@
+
+
+
+		</div>
+
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+
+	<footer class="row py-3 my-4" style="background: #ECECEC;">
+
+
+		<div class="d-flex " style="padding-left:38px">
+
+			<a href="#" class="col-md-1 mb-0 text-muted">Yardim</a>
+			<a href="#" class="col-md-3 mb-0 text-muted">Reklam Yerləşdirin</a>
+
+			<a style="padding-left:550px" href="https://www.facebook.com/">
+				<i class="fab fa-facebook"></i>
+			</a>
+
+			<a style="padding-left:50px" href="https://www.instagram.com/">
+				<i class="fab fa-instagram"></i>
+			</a>
+
+
+
+			<a style="padding-left:50px" href="mailto:tap@tap.az">✉tap@tap.az</a>
+
+
+			<a style="padding-left:50px" href="mailto:tap@tap.az">📞 (012) 599-08-05 </br> <span style="padding-left:25px">(012) 599-08-05</span> </a>
+
+		</div>
+
+
+
+		<hr>
+
+		<div class="col mb-2">
+
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+
+		<div class="col mb-2">
+
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+		<div class="col mb-2">
+
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+
+		<div class="col mb-2">
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+
+		<div class="col mb-2">
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+
+		<div class="col mb-2">
+			<ul class="bav flex-column" style="list-style-type:none">
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Bakı</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Sumqayıt</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Xaçmaz</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Şuşa</a></li>
+				<li class="bav-item mb-2"><a href="#" class="bav-link p-0 text-muted">Ağcabədi</a></li>
+			</ul>
+		</div>
+
+
+		<hr>
+
+		<ul class="fut row" style="list-style-type:none">
+			<li style="padding-left:35px" class="nav-item col-md-2">Layihə haqqında</li>
+			<li class="nav-item col-md-2">Qaydalar</li>
+			<li class="nav-item col-md-3">İstifadəçi razilaşması</li>
+			<li class="nav-item col-md-3">Ümumi oferta müqaviləs</li>
+			<li class="nav-item col-md-2">Məxfilik siyasəti</li>
+		</ul>
+
+
+
+		<ul class="fut2 " style="list-style-type:none">
+			<li class="nav-item">Saytın Administrasiyası reklam bannerlərinin və yerləşdirilmiş elanların <br> məzmununa görə məsuliyyət daşımır.</li>
+			<li class="nav-item" style="padding-left:30%">© 2008-2023 Digital Classifieds MMC. VÖEN: 1405631661</li>
+			<li class="nav-item" style="padding-left:40px">Mobil versiyası</li>
+		</ul>
+
+
+	</footer>
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

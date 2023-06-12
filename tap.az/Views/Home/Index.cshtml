@@ -1,0 +1,29 @@
+﻿@model List<Elan>
+
+<main>
+
+
+
+
+
+	<div class="row justify-content-center">
+
+		@foreach (var item in Model)
+		{
+			<div class="card" style="width: 16rem;">
+				<img src="~/upload/elan/@item.ImageUrl" style="height:65%; width:auto" class="card-img-top" alt="...">
+				<a href="#" class="card-body">
+					<p class="card-text" style="color: black"> <strong>@item.Price <strong> Azn</strong></strong> <br> @item.ElanName</p>
+					<p class="card-text" style="color:#A9A9A9"> <span>@item.City.Name, </span>@item.Date.ToString("dd MMMM yyyy")</p>
+				</a>
+			</div>
+		}
+
+
+	</div>
+
+
+
+
+
+</main>

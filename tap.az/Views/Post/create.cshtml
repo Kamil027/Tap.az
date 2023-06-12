@@ -1,0 +1,130 @@
+﻿@model AddElanViewModel
+
+
+
+<main class="main">
+
+	<h1 class="container">Yeni Elan</h1>
+
+
+	<form method="post" enctype="multipart/form-data">
+
+		<div class="container col-sm-6">
+			@*birinci*@
+			<label asp-for="AddFirstCategoryId"> Siyahıdan seçim edin <span class="text-danger">★</span> </label>
+			<select style="width:400px; height:40px" asp-for="AddFirstCategoryId" class="ChooseCategory" asp-items="ViewBag.category">
+				<option value="-1">Kateqoriya seçin</option>
+			</select>
+			<span asp-validation-for="AddFirstCategoryId" class="text-danger"></span>
+		</div>
+
+
+
+
+		<div class="container col-sm-6" id="SecondCategoryList1">
+			@*ikinci*@
+			<label asp-for="AddSecondCategoryId"> Siyahıdan seçim edin <span class="text-danger">★</span> </label>
+			<select style="width:400px; height:40px" asp-for="AddSecondCategoryId" class="SecondCategoryList">
+			</select>
+			<span asp-validation-for="AddSecondCategoryId" class="text-danger"></span>
+		</div>
+
+
+
+		<div class="container col-sm-6" id="ThirdCategoryList1">
+			@*ucuncu*@
+			<label asp-for="AddThirdCategoryId"> Siyahıdan seçim edin <span class="text-danger">★</span> </label>
+			<select style="width:400px; height:40px" asp-for="AddThirdCategoryId" class="ThirdCategoryList">
+			</select>
+			<span asp-validation-for="AddThirdCategoryId" class="text-danger"></span>
+		</div>
+
+
+
+		<div class="container col-sm-6" id="FourthCategoryList1">
+			@*dorduncu*@
+			<label asp-for="AddFourthCategoryId"> Siyahıdan seçim edin <span class="text-danger">★</span> </label>
+			<select style="width:400px; height:40px" asp-for="AddFourthCategoryId" class="FourthCategoryList">
+			</select>
+			<span asp-validation-for="AddFourthCategoryId" class="text-danger"></span>
+		</div>
+
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddElanName"> Elanın adı <span class="text-danger">★</span> </label>
+			<input style="width:400px; height:40px; margin-left:81px ; border: 1px solid black;" asp-for="AddElanName">
+			<span asp-validation-for="AddElanName" class="text-danger"></span>
+		</div>
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddCityId"> Siyahıdan seçim edin <span class="text-danger">★</span> </label>
+			<select style="width:400px; height:40px" asp-for="AddCityId" asp-items="ViewBag.city">
+				<option value="-1">Şəhər seçin</option>
+			</select>
+			<span asp-validation-for="AddCityId" class="text-danger"></span>
+		</div>
+
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddPrice"> Qiymət, AZN <span class="text-danger">★</span> </label>
+			<input style="width:400px; height:40px; margin-left:59px ; border: 1px solid black;" asp-for="AddPrice">
+			<span asp-validation-for="AddPrice" class="text-danger"></span>
+		</div>
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddDescription"> Məzmun <span class="text-danger">★</span> </label>
+			<textarea style=" width:400px; min-height: 100px; max-height: 200px; margin-left:173px ; border: 1px solid black;" asp-for="AddDescription"></textarea>
+			<span asp-validation-for="AddDescription" class="text-danger"></span>
+		</div>
+
+
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddImageFile">Şəkil əlavı et <span class="text-danger">★</span></label>
+			<input style="width:400px; height:40px; margin-left:66px ; border: 1px solid black;" asp-for="AddImageFile">
+			<span asp-validation-for="AddImageFile" class="text-danger"></span>
+		</div>
+
+
+		<div class="container col-sm-6">
+			<label asp-for="AddPersonName"> Adınız <span class="text-danger">★</span> </label>
+			<input style="width:400px; height:40px; margin-left:110px ; border: 1px solid black;" asp-for="AddPersonName">
+			<span asp-validation-for="AddPersonName" class="text-danger"></span>
+		</div>
+
+		<div class="container col-sm-6">
+			<label asp-for="AddEmail"> E-mail <span class="text-danger">★</span> </label>
+			<input style="width:400px; height:40px; margin-left:110px ; border: 1px solid black;" asp-for="AddEmail">
+			<span asp-validation-for="AddEmail" class="text-danger"></span>
+		</div>
+
+		<div class="container col-sm-6">
+			<label asp-for="AddPhoneNumber"> Mobil nömrə <span class="text-danger">★</span> </label>
+			<input style="width:400px; height:40px; margin-left:64px ; border: 1px solid black;" asp-for="AddPhoneNumber">
+			<span asp-validation-for="AddPhoneNumber" class="text-danger"></span>
+		</div>
+
+
+
+
+
+
+
+		<button type="submit" style="background-color: #FF4F08; border-color: #FF4F08; color: white; margin-left:50%; margin-top:30px" class="btn">
+			Elanı əlavə et
+		</button>
+
+	</form>
+
+</main>
+
+
+
+
+
+
